@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #E4F2E7;
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -10,22 +10,34 @@
 }
 
 .HeaderTitle{
-  position: absolute;
-  top: -20px;
-  left: 20px;
-  letter-spacing: 10px;
+  width: 40%;
+  height: 80px;
+  letter-spacing: 5px;
+  margin: 0px;
+  padding-top: 10px;
   text-transform: uppercase;
-  color: #13599E;
+  color: #387373;
   font-family: 'Fjalla One', sans-serif;
+  text-shadow: 0px 1px 1px #2D3E40, 1px 2px 1px #2D3E40, 2px 3px 1px #2D3E40, 3px 4px 1px #2D3E40;
+  transition: all 300ms;
 }
 
 .css-heg063-MuiTabs-flexContainer{
-  height: 80px;
+  height: auto;
   justify-content: flex-end;
   font-weight: 700;
+  align-content: center;
+  justify-content: space-around;
 }
 
+.HeaderTitle:hover{
+  text-shadow: 0px 1px 1px #2D3E40, -1px 2px 1px #2D3E40, -2px 3px 1px #2D3E40, -3px 4px 1px #2D3E40;
+}
+
+
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+  flex-grow: 1;
+  width: 25%;
   letter-spacing: "3px"; 
   font-size: "20px";
 }
@@ -36,7 +48,7 @@
 
 .container h2{
   letter-spacing: 5px;
-  color: whitesmoke;
+  color: #387373;
   font-family: 'Fjalla One', sans-serif;
 }
 
@@ -66,5 +78,21 @@
 }
 #footer #copy p {
   display: inline;
+  color: #2D3E40;
   padding-right: 25px;
+}
+
+@media (max-width: 900px) {
+  .css-heg063-MuiTabs-flexContainer{
+    flex-direction: column;
+  }
+
+  .css-heg063-MuiTabs-flexContainer *{
+    width: 100%;
+    text-align: center;
+  }
+
+  .css-1d40wtx-MuiButtonBase-root-MuiTab-root{
+    width: 100%;
+  }
 }

@@ -4,7 +4,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Home from '../home';
 import { useNavigate } from 'react-router-dom';
 
 function TabPanel(props) {
@@ -40,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function Header() {
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
 
@@ -59,9 +58,9 @@ export default function BasicTabs() {
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <header>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs sx={{ height: "80px" }} value={value} onChange={handleChange}>
+        <Tabs value={value} onChange={handleChange}>
         <h1 className='HeaderTitle'>Carlos Martinez</h1>
           <Tab 
             sx={{ letterSpacing: "3px", fontSize: "15px" }} 
@@ -83,6 +82,6 @@ export default function BasicTabs() {
           />
         </Tabs>
       </Box>
-    </Box>
+    </header>
   );
 }
