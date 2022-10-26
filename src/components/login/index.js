@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { TextField, Button } from "@mui/material";
 import "./Login.css";
@@ -15,6 +15,8 @@ function Login() {
   // VARIBALES DE useCONTEXT
   const context = useContext(LoginContext);
   const { logged, token } = context;
+  const { email } = context.values;
+  const [ contextEmail, setContextEmail ] = email;
   const [ valueLogged, setValueLogged ] = logged;
   const [ valueToken, setValueToken ] = token;
 
@@ -25,6 +27,12 @@ function Login() {
   const [errorId, setErrorId] = useState("");
 
   const navigate = useNavigate();
+
+  // NO RETORNO
+  useEffect(() => {
+    setValueLogged(false);
+    // eslint-disable-next-line 
+  }, []);
 
   // FUNCIONES VALIDACION
   const onChangeEmail = (e) => {
@@ -45,7 +53,7 @@ function Login() {
   };
 
   // LOGIN
-  function login() {
+  function login(email) {
     axios
       .post(`${context.baseUrl}/auth/login`, context.values)
       .then((res) => res.data.token)
@@ -54,6 +62,9 @@ function Login() {
         console.log(valueToken);
         setValueLogged(true);
         console.log(valueLogged);
+        setContextEmail(email)
+        console.log(contextEmail)
+        console.log(context)
         navigate('/inicio')
       });
   }
@@ -68,7 +79,7 @@ function Login() {
     context.values.email = email.value;
     context.values.discordId = id.value;
 
-    login();
+    login(email.value);
   }
 
   // FORMULARIO 

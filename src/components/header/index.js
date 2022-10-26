@@ -57,6 +57,9 @@ export default function Header() {
   function navigateContact(){
     navigate("/contacto");
   }
+  function navigateAgenda(){
+    navigate("/agenda");
+  }
 
   return (
     <header>
@@ -79,6 +82,12 @@ export default function Header() {
             sx={{ letterSpacing: "3px", fontSize: "15px" }} 
             label="Contacto" 
             onClick={navigateContact}
+            {...a11yProps(2)} 
+          />
+          <Tab 
+            sx={{ letterSpacing: "3px", fontSize: "15px" }} 
+            label="Agenda" 
+            onClick={navigateAgenda}
             {...a11yProps(2)} 
           />
         </Tabs>
