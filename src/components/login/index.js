@@ -92,6 +92,7 @@ function Login() {
           onKeyUp={onChangeEmail}
           onBlur={onChangeEmail}
           id="email"
+          data-testid="email"
           label="Email"
           variant="filled"
           type="email"

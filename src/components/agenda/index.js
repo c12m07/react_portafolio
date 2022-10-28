@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import './Agenda.css'
+import "./Agenda.css";
 import TodoList from "./todoList";
 import AddTodo from "./addTodo";
 import EditTodo from "./editTodo";
@@ -36,7 +36,7 @@ function Agenda() {
     todoService
       .addTodo({
         name: name,
-        description: "soy dummy",
+        description: "soy dummy"
       })
       .then((res) => {
         addTodo(res);
@@ -68,31 +68,37 @@ function Agenda() {
     <>
       <Header />
       <div className="App">
-        <div className="section">
-          <div>
-            <h1>Agenda</h1>
-            <TableContainer>
-              <Table
-                sx={{ minWidth: 100, marginBottom: 10 }}
-                aria-label="simple table"
-              >
-                <TableBody>
-                  <TodoList todos={todos} onDelete={onDelete} onEdit={onEdit} />
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </div>
+        <div className="container">
+          <h2>Agenda</h2>
+          <div className="section">
+            <div className="AddEdit">
+              {edit ? (
+                <EditTodo
+                  item={editedTodo}
+                  onSubmitEdit={onSubmitEdit}
+                  onCancel={() => setEdit(false)}
+                />
+              ) : (
+                <AddTodo onSubmit={onSubmit} />
+              )}
+            </div>
+            <div>
+              <TableContainer>
+                <Table
+                  sx={{ minWidth: 100, marginBottom: 10 }}
+                  aria-label="simple table"
+                >
+                  <TableBody>
+                    <TodoList
+                      todos={todos}
+                      onDelete={onDelete}
+                      onEdit={onEdit}
+                    />
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </div>
 
-          <div className="AddEdit">
-            {edit ? (
-              <EditTodo
-                item={editedTodo}
-                onSubmitEdit={onSubmitEdit}
-                onCancel={() => setEdit(false)}
-              />
-            ) : (
-              <AddTodo onSubmit={onSubmit} />
-            )}
           </div>
         </div>
       </div>
